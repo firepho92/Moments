@@ -1,0 +1,28 @@
+{
+  "name": "architecture-example-lib",
+  "version": "1.0.0",
+  "description": "Serverless aws-nodejs-typescript template",
+  "main": "serverless.ts",
+  "scripts": {
+    "start": "sls offline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.360.0",
+    "@aws-sdk/client-sqs": "^3.354.0",
+    "@middy/core": "^3.4.0",
+    "@middy/event-normalizer": "^4.5.5",
+    "@middy/http-json-body-parser": "^3.4.0",
+    "@middy/sqs-partial-batch-failure": "^4.5.5",
+    "camelcase-keys-deep": "0.1.0",
+    "inversify": "^6.0.1",
+    "joi": "^17.9.2",
+    "uuid": "^9.0.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}

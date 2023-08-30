@@ -1,0 +1,20 @@
+{
+  "name": "architecture-example-db",
+  "version": "1.0.0",
+  "description": "Database related layer",
+  "main": "serverless.ts",
+  "scripts": {
+    "start": "sls offline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "pg": "^8.11.0",
+    "typeorm": "^0.3.17",
+    "typeorm-naming-strategies": "^4.1.0"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}

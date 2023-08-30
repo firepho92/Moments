@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - node -v
+      - yarn
+      - yarn global add serverless@3.27.0
+      - sls -v
+      - cd layers/lib/nodejs
+      - yarn --prod
+      - cd ../../..
+      - cd layers/db/nodejs
+      - yarn --prod
+      - cd ../../..
+  build:
+    commands:
+      - echo $Stage
+      - serverless deploy --stage $Stage --max-concurrency 10

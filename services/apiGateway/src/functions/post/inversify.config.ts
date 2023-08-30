@@ -1,0 +1,42 @@
+import { Container } from 'inversify';
+import TYPES from './TYPES';
+import Adapter from '../../../../../src/modules/infrastructure/adapter/Adapter';
+import UseCase from '../../../../../src/modules/infrastructure/useCase/UseCase';
+import APIGatewayPostController1_0_0 from '../../../../../src/modules/apiGateway/app/APIGatewayPostController/1.0.0/APIGatewayPostController';
+import APIGatewayPostController1_0_1 from '../../../../../src/modules/apiGateway/app/APIGatewayPostController/1.0.1/APIGatewayPostController';
+import APIGatewayResultMapperService from '../../../../../src/modules/infrastructure/domain/mapper/APIGatewayResultMapperService';
+import ApiGatewayPostAdapter from '../../../../../src/modules/apiGateway/adapter/ApiGatewayPostAdapter';
+import ApiGatewayPostUseCase from '../../../../../src/modules/apiGateway/useCase/ApiGatewayPostUseCase';
+import ApiGatewayPostAdapterParams from '../../../../../src/modules/apiGateway/adapter/ApiGatewayPostAdapterParams';
+import ApiGatewayPostUseCaseParams from '../../../../../src/modules/apiGateway/useCase/ApiGatewayPostUseCaseParams';
+import Couple from '../../../../../src/modules/apiGateway/domain/entity/Couple';
+import CoupleDto from '../../../../../src/modules/apiGateway/domain/dto/CoupleDto';
+import BaseMapper from '../../../../../src/modules/infrastructure/domain/mapper/BaseMapper';
+import CoupleMapper from '../../../../../src/modules/apiGateway/domain/mapper/CoupleMapper';
+import CreateBaseRepository from '../../../../../src/modules/infrastructure/domain/repository/CreateBaseRepository';
+import CoupleCreateOneRepository from '../../../../../src/modules/apiGateway/domain/repository/CoupleCreateOneRepository';
+import PersonCreateOneRepository from '../../../../../src/modules/apiGateway/domain/repository/PersonCreateOneRepository';
+import Person from '../../../../../src/modules/apiGateway/domain/entity/Person';
+import DBConnectionManager from '../../../../../src/utils/database/DBConnectionManager';
+import DBConnectionManagerTypeORM from '../../../../../src/utils/database/DBConnectionManagerTypeORM';
+import SecretsManager from '../../../../../src/utils/aws/SecretsManager';
+import SecretsBase from '../../../../../src/utils/aws/SecretsBase';
+import DBConnectionHelperFactory from '../../../../../src/utils/database/DBConnectionHelperFactory';
+
+const container: Container = new Container();
+
+container.bind(TYPES.Default).to(APIGatewayPostController1_0_0);
+container.bind(TYPES['1.0.0']).to(APIGatewayPostController1_0_0);
+container.bind(TYPES['1.0.1']).to(APIGatewayPostController1_0_1);
+container.bind<Container>(Container).toConstantValue(container);
+container.bind<SecretsBase>(TYPES.SecretsManager).to(SecretsManager);
+container.bind<DBConnectionHelperFactory>(TYPES.DBConnectionHelperFactory).to(DBConnectionHelperFactory).inSingletonScope();
+container.bind<DBConnectionManager>(TYPES.DBConnectionManager).to(DBConnectionManagerTypeORM).inSingletonScope();
+container.bind(TYPES.APIGatewayResultMapperService).to(APIGatewayResultMapperService);
+container.bind<Adapter<ApiGatewayPostAdapterParams, Promise<CoupleDto>>>(TYPES.ApiGatewayPostAdapter).to(ApiGatewayPostAdapter);
+container.bind<UseCase<ApiGatewayPostUseCaseParams, Promise<ApiGatewayPostUseCaseParams>>>(TYPES.ApiGatewayPostUseCase).to(ApiGatewayPostUseCase);
+container.bind<BaseMapper<Couple, CoupleDto>>(TYPES.CoupleMapper).to(CoupleMapper);
+container.bind<CreateBaseRepository<Couple>>(TYPES.CoupleCreateOneRepository).to(CoupleCreateOneRepository);
+container.bind<CreateBaseRepository<Person>>(TYPES.PersonCreateOneRepository).to(PersonCreateOneRepository);
+
+export default container;

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@functions/*": [
+        "src/functions/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
+      ],
+      "@services": [
+        "services/*"
+      ]
+    }
+  }
+}

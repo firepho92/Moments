@@ -1,0 +1,19 @@
+{
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false,
+        "suggest": {
+            "localityBonus": "context"
+        }
+    },
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.quickSuggestionsDelay": 10,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.tabCompletion": "on",
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "first",
+    "editor.wordBasedSuggestions": true,
+    "editor.parameterHints.enabled": true
+}
