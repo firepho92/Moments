@@ -4,6 +4,7 @@ export default {
   DBConnectionOfflineHelper: Symbol.for('DBConnectionOfflineHelper'),
   DBConnectionHelperFactory: Symbol.for('DBConnectionHelperFactory'),
   SecretsManager: Symbol.for('SecretsManager'),
+  Identity: Symbol.for('Identity'),
   APIGatewayResultMapperService: Symbol.for('APIGatewayResultMapperService'),
   ApiGatewayGetAdapter: Symbol.for('ApiGatewayGetAdapter'),
   ApiGatewayPostAdapter: Symbol.for('ApiGatewayPostAdapter'),
@@ -18,5 +19,12 @@ export default {
   PropertyGetAdapter: Symbol.for('PropertyGetAdapter'),
   PropertyGetUseCase: Symbol.for('PropertyGetUseCase'),
   PropertyFindRepository: Symbol.for('PropertyFindRepository'),
-  InvalidCoupleAdapter: Symbol.for('InvalidCoupleAdapter')
+  InvalidCoupleAdapter: Symbol.for('InvalidCoupleAdapter'),
+
+  CreateTenantRepository: Symbol.for('CreateTenantRepository'),
+  CreateUserRepository: Symbol.for('CreateUserRepository'),
+  CreateTenantByUserRepository: Symbol.for('CreateTenantByUserRepository'),
+  CreateManagementUseCase: Symbol.for('CreateManagementUseCase'),
+  CreateManagementAdapter: Symbol.for('CreateManagementAdapter'),
+  FindOneProfileRepository: Symbol.for('FindOneProfileRepository'),
 }

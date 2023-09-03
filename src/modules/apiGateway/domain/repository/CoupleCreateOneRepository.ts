@@ -4,7 +4,7 @@ import Couple from '../entity/Couple';
 import { inject, injectable } from 'inversify';
 import { DataSource, InsertQueryBuilder, QueryRunner } from 'typeorm';
 import DBConnectionManager from '../../../../../src/utils/database/DBConnectionManager';
-import CreateBaseRepository from '../../../infrastructure/domain/repository/CreateBaseRepository';
+import CreateBaseRepository from '../../../../infrastructure/domain/repository/CreateBaseRepository';
 
 @injectable()
 export default class CoupleCreateOneRepository extends CreateBaseRepository<Couple> {

@@ -2,10 +2,10 @@ import 'reflect-metadata';
 import TYPES from '../../../../src/TYPES';
 import Couple from '../domain/entity/Couple';
 import { inject, injectable } from 'inversify';
-import UseCase from '../../../../src/modules/infrastructure/useCase/UseCase';
-import Repository from '../../../../src/modules/infrastructure/domain/repository/Repository';
-import PaginationQueryDTO from '../../../../src/modules/infrastructure/domain/dto/PaginationQueryDTO';
-import FindManyPaginatedBaseRepositoryParams from '../../../../src/modules/infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
+import UseCase from '../../../infrastructure/useCase/UseCase';
+import Repository from '../../../infrastructure/domain/repository/Repository';
+import PaginationQueryDTO from '../../../infrastructure/domain/dto/PaginationQueryDTO';
+import FindManyPaginatedBaseRepositoryParams from '../../../infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 
 @injectable()

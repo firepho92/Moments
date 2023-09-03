@@ -1,4 +1,4 @@
-import BaseMapper from '../../../../../src/modules/infrastructure/domain/mapper/BaseMapper';
+import BaseMapper from '../../../../infrastructure/domain/mapper/BaseMapper';
 import PersonDto from '../dto/PersonDto';
 import Person from '../entity/Person';
 

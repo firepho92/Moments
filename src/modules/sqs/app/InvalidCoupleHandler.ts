@@ -2,9 +2,9 @@ import 'reflect-metadata';
 import TYPES from 'src/TYPES';
 import { inject, injectable } from 'inversify';
 import { PromiseStatus } from 'src/utils/enums/PromiseStatus';
-import Adapter from 'src/modules/infrastructure/adapter/Adapter';
+import Adapter from 'src/infrastructure/adapter/Adapter';
 import type { SQSBatchResponse, SQSEvent, SQSRecord } from 'aws-lambda';
-import NormalizedEventBaseHandler from 'src/modules/infrastructure/controller/NormalizedEventBaseController';
+import NormalizedEventBaseHandler from 'src/infrastructure/controller/NormalizedEventBaseController';
 
 @injectable()
 export default class InvalidCoupleHandler extends NormalizedEventBaseHandler {

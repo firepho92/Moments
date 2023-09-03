@@ -1,4 +1,4 @@
-import BaseEntity from '../../../../../src/modules/infrastructure/domain/entity/BaseEntity';
+import BaseEntity from '../../../../infrastructure/domain/entity/BaseEntity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import Couple from './Couple';
 

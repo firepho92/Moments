@@ -1,4 +1,4 @@
-import BaseEntity from '../../../../../src/modules/infrastructure/domain/entity/BaseEntity';
+import BaseEntity from '../../../../infrastructure/domain/entity/BaseEntity';
 import { Entity, ManyToOne } from 'typeorm';
 import Person from './Person';
 import Warning from '../../../../../src/utils/error/Warning';

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import Person from '../entity/Person';
 import { inject, injectable } from 'inversify';
-import CreateBaseRepository from '../../../infrastructure/domain/repository/CreateBaseRepository';
+import CreateBaseRepository from '../../../../infrastructure/domain/repository/CreateBaseRepository';
 import { DataSource, InsertQueryBuilder, QueryRunner } from 'typeorm';
 import TYPES from '../../../../../src/TYPES';
 import DBConnectionManager from '../../../../../src/utils/database/DBConnectionManager';

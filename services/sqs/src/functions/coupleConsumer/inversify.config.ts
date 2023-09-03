@@ -1,6 +1,6 @@
 import TYPES from './TYPES';
 import { Container } from 'inversify/lib/container/container';
-import Adapter from '../../../../../src/modules/infrastructure/adapter/Adapter';
+import Adapter from '../../../../../src/infrastructure/adapter/Adapter';
 import InvalidCoupleHandler from '../../../../../src/modules/sqs/app/InvalidCoupleHandler';
 import InvalidCoupleAdapter from '../../../../../src/modules/sqs/adapter/InvalidCoupleAdapter';
 

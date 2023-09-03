@@ -3,9 +3,9 @@ import TYPES from '../../../../src/TYPES';
 import Couple from '../domain/entity/Couple';
 import Person from '../domain/entity/Person';
 import { inject, injectable } from 'inversify';
-import UseCase from '../../../../src/modules/infrastructure/useCase/UseCase';
+import UseCase from '../../../infrastructure/useCase/UseCase';
 import ApiGatewayPostUseCaseParams from './ApiGatewayPostUseCaseParams';
-import CreateBaseRepository from '../../../../src/modules/infrastructure/domain/repository/CreateBaseRepository';
+import CreateBaseRepository from '../../../infrastructure/domain/repository/CreateBaseRepository';
 import DBConnectionManager from '../../../../src/utils/database/DBConnectionManager';
 
 @injectable()

@@ -1,9 +1,9 @@
 import { Container } from 'inversify';
 import Controller from './Controller';
-import ErrorCode from '../../../../src/utils/error/errorCode';
-import Exception from '../../../../src/utils/error/Exception';
+import ErrorCode from '../../utils/error/errorCode';
+import Exception from '../../utils/error/Exception';
 import EventBaseControllerFactory from './EventBaseControllerFactory';
-import HttpStatusCode from '../../../../src/utils/enums/httpStatusCode';
+import HttpStatusCode from '../../utils/enums/httpStatusCode';
 import { APIGatewayProxyEvent } from 'aws-lambda/trigger/api-gateway-proxy';
 import APIGatewayProxyEventBaseController from './APIGatewayProxyEventBaseController';
 

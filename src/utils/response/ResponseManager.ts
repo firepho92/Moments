@@ -32,7 +32,7 @@ export class ResponseManager {
   }
 
   public handleResponse(statusCode: HttpStatusCode, data: any): BaseResponse {
-    console.log('ResponseManager: ', data)
+    // console.log('ResponseManager: ', data)
     return this.generateResponse(statusCode, {
       data,
       warnings: [],

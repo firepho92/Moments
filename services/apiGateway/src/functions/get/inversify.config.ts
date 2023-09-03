@@ -1,26 +1,26 @@
 import { Container } from 'inversify';
 import TYPES from './TYPES';
-import UseCase from '../../../../../src/modules/infrastructure/useCase/UseCase';
+import UseCase from '../../../../../src/infrastructure/useCase/UseCase';
 import Couple from '../../../../../src/modules/apiGateway/domain/entity/Couple';
 import DBConnectionManager from '../../../../../src/utils/database/DBConnectionManager';
-import PaginationQueryDTO from '../../../../../src/modules/infrastructure/domain/dto/PaginationQueryDTO';
+import PaginationQueryDTO from '../../../../../src/infrastructure/domain/dto/PaginationQueryDTO';
 import ApiGatewayGetAdapter from '../../../../../src/modules/apiGateway/adapter/ApiGatewayGetAdapter';
 import CoupleDto from '../../../../../src/modules/apiGateway/domain/dto/CoupleDto';
-import BaseMapper from '../../../../../src/modules/infrastructure/domain/mapper/BaseMapper';
+import BaseMapper from '../../../../../src/infrastructure/domain/mapper/BaseMapper';
 import CoupleMapper from '../../../../../src/modules/apiGateway/domain/mapper/CoupleMapper';
 import ApiGatewayGetUseCase from '../../../../../src/modules/apiGateway/useCase/ApiGatewayGetUseCase';
 import DBConnectionManagerTypeORM from '../../../../../src/utils/database/DBConnectionManagerTypeORM';
-import PaginationResponseDTO from '../../../../../src/modules/infrastructure/domain/dto/PaginationResponseDTO';
-import PaginationMapperParams from '../../../../../src/modules/infrastructure/domain/dto/PaginationMapperParams';
-import PaginationMapperService from '../../../../../src/modules/infrastructure/domain/mapper/PaginationMapperService';
+import PaginationResponseDTO from '../../../../../src/infrastructure/domain/dto/PaginationResponseDTO';
+import PaginationMapperParams from '../../../../../src/infrastructure/domain/dto/PaginationMapperParams';
+import PaginationMapperService from '../../../../../src/infrastructure/domain/mapper/PaginationMapperService';
 import CoupleFindPaginatedRepository from '../../../../../src/modules/apiGateway/domain/repository/CoupleFindPaginatedRepository';
-import FindManyPaginatedBaseRepository from '../../../../../src/modules/infrastructure/domain/repository/FindManyPaginateBaseRepository';
-import FindManyPaginatedBaseRepositoryParams from '../../../../../src/modules/infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
+import FindManyPaginatedBaseRepository from '../../../../../src/infrastructure/domain/repository/FindManyPaginateBaseRepository';
+import FindManyPaginatedBaseRepositoryParams from '../../../../../src/infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
 import DBConnectionHelperFactory from '../../../../../src/utils/database/DBConnectionHelperFactory';
 import SecretsBase from '../../../../../src/utils/aws/SecretsBase';
 import SecretsManager from '../../../../../src/utils/aws/SecretsManager';
 import APIGatewayGetController1_0_0 from '../../../../../src/modules/apiGateway/app/APIGatewayGetController/1.0.0/APIGatewayGetController';
-import APIGatewayResultMapperService from '../../../../../src/modules/infrastructure/domain/mapper/APIGatewayResultMapperService';
+import APIGatewayResultMapperService from '../../../../../src/infrastructure/domain/mapper/APIGatewayResultMapperService';
 
 const container: Container = new Container();
 

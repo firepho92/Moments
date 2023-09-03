@@ -5,8 +5,8 @@ import container from './inversify.config';
 import { SQSEvent, SQSRecord } from 'aws-lambda';
 import eventNormalizerMiddleware from '@middy/event-normalizer';
 import sqsPartialBatchFailure from '@middy/sqs-partial-batch-failure';
-import Controller from '../../../../../src/modules/infrastructure/controller/Controller';
-import NormalizedEventControllerFactory from '../../../../../src/modules/infrastructure/controller/NormalizedEventControllerFactory';
+import Controller from '../../../../../src/infrastructure/controller/Controller';
+import NormalizedEventControllerFactory from '../../../../../src/infrastructure/controller/NormalizedEventControllerFactory';
 
 export const main = middy(async (event: SQSEvent): Promise<SQSRecord[]> => {
   // console.log('invalid', event);

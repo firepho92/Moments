@@ -4,13 +4,13 @@ import { inject, injectable } from 'inversify';
 import TYPES from '../../../../../../src/TYPES';
 import Couple from '../../../domain/entity/Couple';
 import Validator, { VALIDATOR_TYPE } from '../../../../../../src/utils/request/Validator';
-import Adapter from '../../../../../../src/modules/infrastructure/adapter/Adapter';
-import Mapper from '../../../../../../src/modules/infrastructure/domain/mapper/Mapper';
+import Adapter from '../../../../../infrastructure/adapter/Adapter';
+import Mapper from '../../../../../infrastructure/domain/mapper/Mapper';
 import { APIGatewayProxyEvent } from 'aws-lambda/trigger/api-gateway-proxy';
-import APIGatewayResult from '../../../../../../src/modules/infrastructure/domain/dto/APIGatewayResult';
-import PaginationQueryDTO from '../../../../../../src/modules/infrastructure/domain/dto/PaginationQueryDTO';
-import PaginationResponseDTO from '../../../../../../src/modules/infrastructure/domain/dto/PaginationResponseDTO';
-import APIGatewayProxyEventBaseController from '../../../../../../src/modules/infrastructure/controller/APIGatewayProxyEventBaseController';
+import APIGatewayResult from '../../../../../infrastructure/domain/dto/APIGatewayResult';
+import PaginationQueryDTO from '../../../../../infrastructure/domain/dto/PaginationQueryDTO';
+import PaginationResponseDTO from '../../../../../infrastructure/domain/dto/PaginationResponseDTO';
+import APIGatewayProxyEventBaseController from '../../../../../infrastructure/controller/APIGatewayProxyEventBaseController';
 
 @injectable()
 export default class APIGatewayGetController extends APIGatewayProxyEventBaseController<PaginationResponseDTO<Couple>> {

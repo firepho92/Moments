@@ -3,11 +3,11 @@ import TYPES from '../../../../../src/TYPES';
 import Couple from '../entity/Couple';
 import { injectable, inject } from 'inversify';
 import { DataSource, QueryRunner, SelectQueryBuilder } from 'typeorm';
-import Repository from 'src/modules/infrastructure/domain/repository/Repository';
+import Repository from 'src/infrastructure/domain/repository/Repository';
 import DBConnectionManager from '../../../../../src/utils/database/DBConnectionManager';
-import PaginationQueryDTO from '../../../../../src/modules/infrastructure/domain/dto/PaginationQueryDTO';
-import FindManyPaginateBaseRepository from '../../../../../src/modules/infrastructure/domain/repository/FindManyPaginateBaseRepository';
-import FindManyPaginatedBaseRepositoryParams from '../../../../../src/modules/infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
+import PaginationQueryDTO from '../../../../infrastructure/domain/dto/PaginationQueryDTO';
+import FindManyPaginateBaseRepository from '../../../../infrastructure/domain/repository/FindManyPaginateBaseRepository';
+import FindManyPaginatedBaseRepositoryParams from '../../../../infrastructure/domain/repository/FindManyPaginatedBaseRepositoryParams';
 
 @injectable()
 export default class CoupleFindPaginatedRepository extends FindManyPaginateBaseRepository<Couple> implements Repository<PaginationQueryDTO, Promise<FindManyPaginatedBaseRepositoryParams<Couple>>> {

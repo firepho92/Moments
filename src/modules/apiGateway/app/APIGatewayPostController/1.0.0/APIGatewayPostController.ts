@@ -5,12 +5,12 @@ import TYPES from '../../../../../../src/TYPES';
 import CoupleDto from '../../../domain/dto/CoupleDto';
 import Validator from '../../../../../../src/utils/request/Validator';
 import { APIGatewayProxyEvent } from 'aws-lambda/trigger/api-gateway-proxy';
-import Adapter from '../../../../../../src/modules/infrastructure/adapter/Adapter';
+import Adapter from '../../../../../infrastructure/adapter/Adapter';
 import ApiGatewayPostAdapterParams from '../../../adapter/ApiGatewayPostAdapterParams';
-import Mapper from '../../../../../../src/modules/infrastructure/domain/mapper/Mapper';
+import Mapper from '../../../../../infrastructure/domain/mapper/Mapper';
 import { VALIDATOR_TYPE } from '../../../../../../src/middleware/httpJoiValidatorMiddleware';
-import APIGatewayResult from '../../../../../../src/modules/infrastructure/domain/dto/APIGatewayResult';
-import APIGatewayProxyEventBaseController from '../../../../../../src/modules/infrastructure/controller/APIGatewayProxyEventBaseController';
+import APIGatewayResult from '../../../../../infrastructure/domain/dto/APIGatewayResult';
+import APIGatewayProxyEventBaseController from '../../../../../infrastructure/controller/APIGatewayProxyEventBaseController';
 
 @injectable()
 export default class ApiGatewayPostController extends APIGatewayProxyEventBaseController<CoupleDto> {

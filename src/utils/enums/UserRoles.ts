@@ -1,0 +1,6 @@
+const UserRoles = {
+  ROOT: '00000000-0000-0000-0000-000000000000',
+  MANAGER: '00000000-0000-0000-0000-000000000001',
+}
+
+export default UserRoles;
