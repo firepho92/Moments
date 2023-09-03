@@ -3,6 +3,7 @@ import TYPES from 'src/TYPES';
 import { inject, injectable } from 'inversify';
 import Repository from 'src/infrastructure/domain/repository/Repository';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
+import { DataSource, QueryRunner } from 'typeorm';
 
 @injectable()
 export default class CreateManagementDBStructureRepository implements Repository<any, Promise<void>> {
@@ -11,6 +12,8 @@ export default class CreateManagementDBStructureRepository implements Repository
   ) {}
 
   async execute(port?: any): Promise<void> {
-    throw new Error('Method not implemented.');
+    const connection: DataSource | QueryRunner = await this.dbConnectionManager.getActiveConnection();
+
+    const query = connection.query(``)
   }
 }
