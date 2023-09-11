@@ -11,7 +11,7 @@ import APIGatewayResult from '../../../../../infrastructure/domain/dto/APIGatewa
 import PaginationQueryDTO from '../../../../../infrastructure/domain/dto/PaginationQueryDTO';
 import PaginationResponseDTO from '../../../../../infrastructure/domain/dto/PaginationResponseDTO';
 import APIGatewayProxyEventBaseController from '../../../../../infrastructure/controller/APIGatewayProxyEventBaseController';
-import { controller } from 'src/infrastructure/controller/decorator/controller2';
+import { controller } from 'src/infrastructure/controller/decorator/controller';
 
 @injectable()
 // @controller('a')

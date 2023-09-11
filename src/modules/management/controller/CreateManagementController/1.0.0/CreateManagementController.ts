@@ -5,7 +5,7 @@ import Adapter from 'src/infrastructure/adapter/Adapter';
 import Mapper from 'src/infrastructure/domain/mapper/Mapper';
 import TenantByUserDto from 'src/domain/dto/admin/TenantByUserDto';
 import APIGatewayResult from 'src/infrastructure/domain/dto/APIGatewayResult';
-import { controller } from 'src/infrastructure/controller/decorator/controller2';
+import { controller } from 'src/infrastructure/controller/decorator/controller';
 import APIGatewayProxyEventBaseController from 'src/infrastructure/controller/APIGatewayProxyEventBaseController';
 
 @injectable()
