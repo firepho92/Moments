@@ -23,7 +23,7 @@ export default class DBConnectionOfflineHelperTypeORM implements DBConnectionHel
       password: EnvironmentHelper.DB_POSTGRES_PASSWORD,
       database: EnvironmentHelper.DB_POSTGRES_NAME,
       port: parseInt(EnvironmentHelper.DB_POSTGRES_PORT ?? '5432', 10),
-      synchronize: true,
+      synchronize: false,
     };
   }
 

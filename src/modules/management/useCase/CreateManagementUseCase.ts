@@ -17,6 +17,8 @@ import FindQueryDTO from 'src/infrastructure/domain/dto/FindQueryDTO';
 import Tenant from 'src/domain/entity/admin/Tenant';
 import { v4 as uuidv4 } from 'uuid';
 import UserRoles from 'src/utils/enums/UserRoles';
+import CreateManagementDBStructureRepository from 'src/domain/repository/admin/management/CreateManagementDBStructureRepository';
+import generator from 'generate-password';
 
 @injectable()
 export default class CreateManagementUseCase implements UseCase<any, Promise<TenantByUser>> {
@@ -26,6 +28,7 @@ export default class CreateManagementUseCase implements UseCase<any, Promise<Ten
     @inject(TYPES.CreateTenantRepository) private readonly createTenantRepository: CreateTenantRepository,
     @inject(TYPES.CreateTenantByUserRepository) private readonly createTenantByUserRepository: CreateTenantByUserRepository,
     @inject(TYPES.FindOneProfileRepository) private readonly findOneProfileRepository: FindOneProfileRepository,
+    @inject(TYPES.CreateManagementDBStructureRepository) private readonly createManagementDBStructureRepository: CreateManagementDBStructureRepository,
   ) {}
 
   async execute(port?: FindQueryDTO<{ email: string }>): Promise<TenantByUser> {
@@ -35,26 +38,26 @@ export default class CreateManagementUseCase implements UseCase<any, Promise<Ten
     try {
       profile = await this.findOneProfileRepository.execute(port);
       console.log('CreateMomentSpaceUseCase profile', profile);
+      throw new Exception(HttpStatusCode.BAD_REQUEST, ErrorCode.ERR0001)
     } catch (error) {
       throw new Exception(HttpStatusCode.BAD_REQUEST, ErrorCode.ERR0001)
     } finally {
       await this.dBConnectionManager.disconnect();
     }
-
+    // secret creation
     const transaction = await this.dBConnectionManager.getTransaction();
     try {
       const user = new User(UserRoles.MANAGER, profile.id);
-      const createdUser = await this.createUserRepository.execute(user);
-      console.log('CreateMomentSpaceUseCase createdUser', createdUser);
       const tenant = new Tenant(uuidv4().toString());
-      const createdTenant = await this.createTenantRepository.execute(tenant);
+      const [createdUser, createdTenant] = await Promise.all([await this.createUserRepository.execute(user), await this.createTenantRepository.execute(tenant)]);
+      console.log('CreateMomentSpaceUseCase createdUser', createdUser);
       console.log('CreateMomentSpaceUseCase createdTenant', createdTenant);
-      console.log(createdUser.id, createdUser.profile, createdUser.role)
-      console.log('CreateMomentSpaceUseCase createdTenant.id', createdTenant.id, createdUser.id);
       const tenantByUser = new TenantByUser(createdTenant.id, createdUser.id);
       const createdTenantByUser = await this.createTenantByUserRepository.execute(tenantByUser);
       console.log('CreateMomentSpaceUseCase createdTenantByUser', createdTenantByUser);
+      await this.createManagementDBStructureRepository.execute({ username: profile.email, password: generator.generate({ length: 10, numbers: true, symbols: true }), tenant: createdTenant.name })
       await transaction.commitTransaction();
+
       return tenantByUser;
     } catch (error) {
       console.log('CreateMomentSpaceUseCase error', error);

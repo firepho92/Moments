@@ -3,6 +3,7 @@ import { Container } from 'inversify';
 import { SecretsManager } from '@aws-sdk/client-secrets-manager';
 import CreateTenantRepository from '../../../../../src/domain/repository/admin/tenant/CreateTenantRepository';
 import CreateTenantByUserRepository from '../../../../../src/domain/repository/admin/tenantByUser/CreateTenantByUserRepository';
+import CreateManagementDBStructureRepository from '../../../../../src/domain/repository/admin/management/CreateManagementDBStructureRepository';
 import CreateUserRepository from '../../../../../src/domain/repository/admin/user/CreateUserRepository';
 import FindOneProfileRepository from '../../../../../src/domain/repository/public/profile/FindOneProfileRepository';
 import CreateMomentSpaceAdminController1_0_0 from '../../../../../src/modules/management/controller/CreateManagementController/1.0.0/CreateManagementController';
@@ -27,5 +28,6 @@ container.bind(TYPES.CreateTenantByUserRepository).to(CreateTenantByUserReposito
 container.bind(TYPES.CreateManagementUseCase).to(CreateManagementUseCase);
 container.bind(TYPES.CreateManagementAdapter).to(CreateManagementAdapter);
 container.bind(TYPES.FindOneProfileRepository).to(FindOneProfileRepository);
+container.bind(TYPES.CreateManagementDBStructureRepository).to(CreateManagementDBStructureRepository);
 
 export default container;

@@ -1,9 +1,10 @@
 import 'reflect-metadata';
 import TYPES from 'src/TYPES';
 import { inject, injectable } from 'inversify';
+import { DataSource, QueryRunner } from 'typeorm';
 import Repository from 'src/infrastructure/domain/repository/Repository';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
-import { DataSource, QueryRunner } from 'typeorm';
+import CreateManagementDto from 'src/domain/dto/admin/CreateManagementDto';
 
 @injectable()
 export default class CreateManagementDBStructureRepository implements Repository<any, Promise<void>> {
@@ -11,9 +12,13 @@ export default class CreateManagementDBStructureRepository implements Repository
     @inject(TYPES.DBConnectionManager) private readonly dbConnectionManager: DBConnectionManager,
   ) {}
 
-  async execute(port?: any): Promise<void> {
+  async execute(port?: CreateManagementDto): Promise<void> {
     const connection: DataSource | QueryRunner = await this.dbConnectionManager.getActiveConnection();
 
-    const query = connection.query(``)
+    const query = await connection.query(
+      'public.create_management(?, ?, ?)', [port.tenant, port.username, port.password]
+    );
+
+    return query;
   }
 }

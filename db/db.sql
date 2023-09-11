@@ -14,7 +14,7 @@ BEGIN
     PRIMARY KEY(id)
   )';
   EXECUTE 'CREATE TABLE ' || schema_name || '.post (
-  	id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    id uuid NOT NULL DEFAULT uuid_generate_v4(),
     created_at timestamp NOT NULL DEFAULT now(),
     created_by varchar(50) NOT NULL DEFAULT ''user'',
     updated_at timestamp NOT NULL DEFAULT now(),

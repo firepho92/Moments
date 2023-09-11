@@ -11,8 +11,10 @@ import APIGatewayResult from '../../../../../infrastructure/domain/dto/APIGatewa
 import PaginationQueryDTO from '../../../../../infrastructure/domain/dto/PaginationQueryDTO';
 import PaginationResponseDTO from '../../../../../infrastructure/domain/dto/PaginationResponseDTO';
 import APIGatewayProxyEventBaseController from '../../../../../infrastructure/controller/APIGatewayProxyEventBaseController';
+import { controller } from 'src/infrastructure/controller/decorator/controller2';
 
 @injectable()
+// @controller('a')
 export default class APIGatewayGetController extends APIGatewayProxyEventBaseController<PaginationResponseDTO<Couple>> {
   
   constructor(
@@ -32,7 +34,7 @@ export default class APIGatewayGetController extends APIGatewayProxyEventBaseCon
   }
 
   protected async run(port?: APIGatewayProxyEvent): Promise<PaginationResponseDTO<Couple>> {
-    console.log('ApiGatewayController1_0_0', port);
+    // console.log('ApiGatewayController1_0_0', port);
     const couplesPaginated: PaginationResponseDTO<Couple> = await this.adapter.execute(new PaginationQueryDTO({ pageNumber: port.queryStringParameters?.pageNumber, size: port.queryStringParameters?.size }));
     return couplesPaginated;
   }

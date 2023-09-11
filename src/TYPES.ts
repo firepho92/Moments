@@ -27,4 +27,5 @@ export default {
   CreateManagementUseCase: Symbol.for('CreateManagementUseCase'),
   CreateManagementAdapter: Symbol.for('CreateManagementAdapter'),
   FindOneProfileRepository: Symbol.for('FindOneProfileRepository'),
+  CreateManagementDBStructureRepository: Symbol.for('CreateManagementDBStructureRepository'),
 }
