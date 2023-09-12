@@ -16,7 +16,7 @@ export default class APIGatewayProxyEventMock {
     httpMethod,
     path,
     headers = {} as any,
-    queryStringParameters = null,
+    queryStringParameters = null as any,
     body = '',
     isBase64Encoded = false,
     multiValueHeaders = {},
