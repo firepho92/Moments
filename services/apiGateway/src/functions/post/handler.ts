@@ -11,9 +11,9 @@ import APIGatewayEventBaseControllerFactory from '../../../../../src/infrastruct
 export const main = middy(async (event: APIGatewayProxyEvent) => {
   // console.log('main handler', event);
   const controllerFactory = new APIGatewayEventBaseControllerFactory(container, event, TYPES);
-  const handler: Controller<APIGatewayProxyEvent> = controllerFactory.getInstance();
+  const controller: Controller<APIGatewayProxyEvent> = controllerFactory.getInstance();
 
-  const response = await handler.execute(event);
+  const response = await controller.execute(event);
   // console.log('main handler response', response);
   return response;
 });
