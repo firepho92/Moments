@@ -30,8 +30,8 @@ export default class CreateMomentSpaceAdminController extends APIGatewayProxyEve
 
   protected async run(port: APIGatewayProxyEvent & { body: unknown }): Promise<TenantByUserDto> {
     // console.log('CreateMomentSpaceAdminController run', port);
-    const { name } = port.body as unknown as { name: string };
-    const tenantByUserDto: TenantByUserDto = await this.adapter.execute(name);
+    const { space } = port.body as unknown as { space: string };
+    const tenantByUserDto: TenantByUserDto = await this.adapter.execute(space);
     return tenantByUserDto;
   }
 }
