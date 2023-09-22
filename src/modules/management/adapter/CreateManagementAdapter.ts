@@ -15,6 +15,7 @@ export default class CreateManagementAdapter implements Adapter<string, Promise<
   ) {}
 
   async execute(port: string): Promise<TenantByUserDto> {
+    console.log('CreateManagementAdapter port', port);
     const params = new FindQueryDTO<{ email: string }>({ criteria: { email: IdentityJWT.getInstance().email.toString() } });
     const tenantByUserDto = await this.createManagementUseCase.execute({space: port, user: params});
     console.log('CreateManagementAdapter tenantByUserDto', tenantByUserDto);
