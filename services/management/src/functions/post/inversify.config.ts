@@ -1,6 +1,6 @@
 import TYPES from './TYPES';
 import { Container } from 'inversify';
-import { SecretsManager } from '@aws-sdk/client-secrets-manager';
+import SecretsManager from '../../../../../src/utils/aws/SecretsManager';
 import CreateTenantRepository from '../../../../../src/domain/repository/admin/tenant/CreateTenantRepository';
 import CreateTenantByUserRepository from '../../../../../src/domain/repository/admin/tenantByUser/CreateTenantByUserRepository';
 import CreateManagementDBStructureRepository from '../../../../../src/domain/repository/admin/management/CreateManagementDBStructureRepository';
