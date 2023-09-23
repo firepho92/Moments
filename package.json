@@ -22,7 +22,7 @@
     "generate-password": "^1.7.0",
     "inversify": "^6.0.1",
     "joi": "^17.9.2",
-    "pg": "^8.11.0",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
     "typeorm-naming-strategies": "^4.1.0",

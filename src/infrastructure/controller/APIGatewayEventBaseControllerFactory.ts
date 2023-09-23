@@ -21,7 +21,7 @@ export default class APIGatewayEventBaseControllerFactory extends EventBaseContr
   protected getVersion(event: APIGatewayProxyEvent): string {
     // console.log('event.headers', event.headers);
     const regex = /version=([\d.]+)/;
-    const matches = event.headers['Accept'].match(regex);
+    const matches = event.headers['Accept']?.match(regex);
     console.log('matches', matches);
     const version = matches ? matches.at(1) : 'Default';
     console.log('version', version);

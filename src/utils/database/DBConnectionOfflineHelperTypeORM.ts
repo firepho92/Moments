@@ -7,7 +7,6 @@ import { injectable } from 'inversify/lib/annotation/injectable';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import EnvironmentHelper from '../helpers/EnvironmentHelper';
 
-
 @injectable()
 export default class DBConnectionOfflineHelperTypeORM implements DBConnectionHelper {
 	private dataSourceOptions: PostgresConnectionOptions;

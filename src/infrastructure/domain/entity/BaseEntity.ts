@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import BaseEntityParams from './BaseEntityParams';
+import BaseEntityModel from '../model/BaseEntityModel';
 
 /**
  * @abstract BaseEntity
@@ -24,23 +24,22 @@ export default abstract class BaseEntity {
   @Column('varchar', { length: 50, default: 'user', name: 'created_by' })
   createdBy: string;
   
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  @UpdateDateColumn({ name: 'last_updated_at' })
+  lastUpdatedAt: Date;
   
-  @Column('varchar', { length: 50, default: 'user', name: 'updated_by' })
-  updatedBy: string;
+  @Column('varchar', { length: 50, default: 'user', name: 'last_updated_by' })
+  lastUpdatedBy: string;
   
   @Column('bool', { default: 'true', name: 'active' })
   active: boolean;
 
-  constructor();
-  constructor(port?: BaseEntityParams) {
+  constructor(port?: BaseEntityModel) {
     if (port) {
       this.id = port.id;
       this.createdAt = port.createdAt;
       this.createdBy = port.createdBy;
-      this.updatedAt = port.updatedAt;
-      this.updatedBy = port.updatedBy;
+      this.lastUpdatedAt = port.lastUpdatedAt;
+      this.lastUpdatedBy = port.lastUpdatedBy;
       this.active = port.active;
     }
   }
