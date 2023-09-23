@@ -11,6 +11,6 @@ export default class EnvironmentHelper {
   public static readonly DB_POSTGRES_HOST = process.env.DB_POSTGRES_HOST ?? 'localhost'
   public static readonly DB_POSTGRES_PORT = process.env.DB_POSTGRES_PORT ?? '5432'
   public static readonly REGION = process.env.REGION ?? 'us-east-1'
-  public static readonly DB_POSTGRES_NAME = process.env.DB_POSTGRES_NAME ?? 'architecture'
+  public static readonly DB_POSTGRES_NAME = process.env.DB_POSTGRES_NAME ?? 'moments'
   public static readonly SECRET_NAME = process.env.SecretDBName ?? 'SecretDBName'
 }

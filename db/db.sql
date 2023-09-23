@@ -1,3 +1,6 @@
+CREATE SCHEMA admin;
+CREATE SCHEMA public;
+
 CREATE OR REPLACE PROCEDURE create_management(schema_name TEXT, user_name TEXT, pass TEXT)
 LANGUAGE plpgsql
 AS $$
