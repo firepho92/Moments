@@ -87,22 +87,9 @@ const serverlessConfiguration: AWS = {
   custom: {
     esbuild: {
       external:[
-        "aws-sdk",
-        "pg",
-        "typeorm",
-        "typeorm-naming-strategies",
-        "pg-native",
-        "@aws-sdk/client-secrets-manager",
-        "@aws-sdk/client-sqs",
-        "@middy/core",
-        "@middy/http-json-body-parser",
-        "@middy/sqs-partial-batch-failure",
-        "camelcase-keys-deep",
-        "inversify",
-        "joi",
-        "uuid",
-        "reflect-metadata",
+        "aws-sdk"
       ],
+      plugins: 'esbuild-plugins.ts',
       bundle: true,
       minify: false,
       sourcemap: process.env.IS_OFFLINE === 'true',
