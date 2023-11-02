@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import TYPES from 'src/TYPES';
-import User from 'src/domain/entity/admin/User';
+import User from 'src/domain/entity/management/User';
 import CreateBaseRepository from 'src/infrastructure/domain/repository/CreateBaseRepository';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 import { DataSource, InsertQueryBuilder, QueryRunner } from 'typeorm';

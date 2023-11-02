@@ -2,17 +2,17 @@ import 'reflect-metadata';
 import TYPES from 'src/TYPES';
 import { v4 as uuidv4 } from 'uuid';
 import { inject, injectable } from 'inversify';
-import User from 'src/domain/entity/admin/User';
+import User from 'src/domain/entity/management/User';
 import Exception from 'src/utils/error/Exception';
 import UserRoles from 'src/utils/enums/UserRoles';
 import ErrorCode from 'src/utils/error/errorCode';
-import Tenant from 'src/domain/entity/admin/Tenant';
+import Tenant from 'src/domain/entity/management/Tenant';
 import SecretsBase from 'src/utils/aws/SecretsBase';
 import Profile from 'src/domain/entity/public/Profile';
 import UseCase from 'src/infrastructure/useCase/UseCase';
 import HttpStatusCode from 'src/utils/enums/httpStatusCode';
-import TenantByUser from 'src/domain/entity/admin/TenantByUser';
-import DataBaseUser from 'src/domain/entity/admin/DataBaseUser';
+import TenantByUser from 'src/domain/entity/management/TenantByUser';
+import DataBaseUser from 'src/domain/entity/management/DataBaseUser';
 import CreateSpaceDto from 'src/domain/dto/admin/CreateSpaceDto';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 import CreateBaseRepository from 'src/infrastructure/domain/repository/CreateBaseRepository';
@@ -38,9 +38,8 @@ export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, 
     try {
       profile = await this.findOneProfileRepository.execute(port.user);
       console.log('CreateMomentSpaceUseCase profile', profile);
-      throw new Exception(HttpStatusCode.BAD_REQUEST, ErrorCode.ERR0001)
     } catch (error) {
-      throw new Exception(HttpStatusCode.NOT_FOUND, ErrorCode.ERR0001)
+      throw new Exception(HttpStatusCode.NOT_FOUND, ErrorCode.NOT_FOUND)
     } finally {
       await this.dBConnectionManager.disconnect();
     }
@@ -54,7 +53,7 @@ export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, 
 
       const user = new User(UserRoles.MANAGER, profile.id);
 
-      const tenant = new Tenant({name: port.space});
+      const tenant = new Tenant(port.space);
 
       const [createdUser, createdTenant] = await Promise.all([await this.createUserRepository.execute(user), await this.createTenantRepository.execute(tenant)]);
 

@@ -1,7 +1,7 @@
 import { inject } from 'inversify';
 import 'reflect-metadata';
 import TYPES from 'src/TYPES';
-import TenantByUser from 'src/domain/entity/admin/TenantByUser';
+import TenantByUser from 'src/domain/entity/management/TenantByUser';
 import CreateBaseRepository from 'src/infrastructure/domain/repository/CreateBaseRepository';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 import { DataSource, InsertQueryBuilder, QueryRunner } from 'typeorm';

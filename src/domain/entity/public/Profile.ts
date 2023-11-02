@@ -1,17 +1,17 @@
 import 'reflect-metadata';
 import BaseEntity from 'src/infrastructure/domain/entity/BaseEntity';
-import { Column, Entity, OneToOne } from 'typeorm';
-import User from '../admin/User';
 
-@Entity({name: 'profile', schema: 'public'})
+import User from '../management/User';
+
+
 export default class Profile extends BaseEntity {
-  @Column({type: 'varchar', length: 120, name: 'name', nullable: false})
+  
   private _name: string;
 
-  @Column({type: 'varchar', length: 120, name: 'email', nullable: false})
+  
   private _email: string;
 
-  @OneToOne(() => User, (user: User) => user.profile)
+  
   private _user: User;
 
   constructor(name: string, email: string) {

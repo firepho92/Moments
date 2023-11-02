@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import BaseEntityModel from '../model/BaseEntityModel';
+import BaseEntityModel from '../model/BaseModel';
 
 /**
  * @abstract BaseEntity

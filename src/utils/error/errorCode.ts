@@ -1,391 +1,148 @@
 import ErrorCategory from '../enums/errorCategory';
-import { ErrorType } from './BaseError';
 
-const ErrorCode: { [key: string]: ErrorType } = {
+const ErrorDitionary = {
   //#region ERR0000 ... ERR0099 = Generales aplicativo
-  ERR0000: {
-    code: 'ERR0000',
+  INTERNAL_SERVER_ERROR: {
+    code: 1,
     category: ErrorCategory.SYSTEM,
     msg: 'INTERNAL_SERVER_ERROR',
-    description: '',
+    description: 'An unexpected error occurred on the server. Please try again later.',
   },
-  ERR0001: {
-    code: 'ERR0001',
+  NOT_FOUND: {
+    code: 2,
     category: ErrorCategory.USER,
     msg: 'NOT_FOUND',
-    description: '',
+    description: 'The requested resource was not found.',
   },
-  ERR0002: {
-    code: 'ERR0002',
+  CANNOT_UPDATE_DUE_TO_OUTDATED_DATA: {
+    code: 3,
     category: ErrorCategory.USER,
     msg: 'CANNOT_UPDATE_DUE_TO_OUTDATED_DATA',
-    description: '',
+    description: 'The data is outdated and cannot be updated.',
   },
-  ERR0003: {
-    code: 'ERR0003',
+  INVALID_PAGINATION_FORMAT: {
+    code: 4,
     category: ErrorCategory.USER,
     msg: 'INVALID_PAGINATION_FORMAT',
-    description: '',
+    description: 'The pagination format is invalid.',
   },
-  ERR0004: {
-    code: 'ERR0004',
+  INVALID_PAGINATION_LIMIT: {
+    code: 5,
     category: ErrorCategory.USER,
     msg: 'INVALID_PAGINATION_LIMIT',
     description: '',
   },
-  ERR0005: {
-    code: 'ERR0005',
+  INVALID_PARAMETERS: {
+    code: 6,
     category: ErrorCategory.USER,
     msg: 'INVALID_PARAMETERS',
-    description: 'Ensure that at least one parameter is brought',
+    description: 'Ensure that at least one parameter is brought.',
   },
-  ERR0006: {
-    code: 'ERR0006',
+  MISSING_PARAMETERS: {
+    code: 7,
     category: ErrorCategory.USER,
     msg: 'MISSING_PARAMETERS',
-    description: '',
+    description: 'One or more required parameters are missing.',
   },
-  ERR0007: {
-    code: 'ERR0007',
+  DUPLICATED_KEY: {
+    code: 8,
     category: ErrorCategory.USER,
     msg: 'DUPLICATED_KEY',
-    description: '',
+    description: 'A duplicate key was found.',
   },
-  ERR0008: {
-    code: 'ERR0008',
+  BAD_REQUEST: {
+    code: 9,
     category: ErrorCategory.USER,
     msg: 'BAD_REQUEST',
-    description: '',
+    description: 'The request was malformed or invalid.',
   },
-  ERR0009: {
-    code: 'ERR0009',
+  METHOD_DEPRECATED: {
+    code: 10,
     category: ErrorCategory.USER,
     msg: 'METHOD_DEPRECATED',
-    description: '',
+    description: 'The method used is deprecated.',
   },
-  ERR0010: {
-    code: 'ERR0010',
+  DATABASE_UNAVAILABLE: {
+    code: 11,
     category: ErrorCategory.SYSTEM,
     msg: 'DATABASE_UNAVAILABLE',
-    description: '',
+    description: 'The database is currently unavailable.',
   },
-  ERR0011: {
-    code: 'ERR0011',
+  SERVICE_UNAVAILABLE: {
+    code: 12,
     category: ErrorCategory.SYSTEM,
     msg: 'SERVICE_UNAVAILABLE',
-    description: '',
+    description: 'The service is currently unavailable.',
   },
-  ERR0012: {
-    code: 'ERR0012',
+  COLUMN_NOT_FOUND: {
+    code: 13,
     category: ErrorCategory.SYSTEM,
     msg: 'COLUMN_NOT_FOUND',
-    description: '',
+    description: 'The specified column was not found in the database.',
   },
-  ERR0013: {
-    code: 'ERR0013',
+  DUPLICATED_ID_FOUND: {
+    code: 14,
     category: ErrorCategory.SYSTEM,
     msg: 'DUPLICATED_ID_FOUND',
-    description: '',
+    description: 'A duplicate ID was found in the database.',
   },
-  ERR0014: {
-    code: 'ERR0014',
+  ITEM_INACTIVE: {
+    code: 15,
     category: ErrorCategory.SYSTEM,
     msg: 'ITEM_INACTIVE',
-    description: '',
+    description: 'The requested item is inactive.',
   },
-  ERR0015: {
-    code: 'ERR0015',
+  RULE_NOT_APPLY: {
+    code: 16,
     category: ErrorCategory.BUSINESS,
     msg: 'RULE_NOT_APPLY',
-    description: '',
+    description: 'The business rule does not apply.',
   },
-  ERR0016: {
-    code: 'ERR0016',
+  CANNOT_CONNECT_TO_DATABASE: {
+    code: 17,
     category: ErrorCategory.SYSTEM,
     msg: 'CANNOT_CONNECT_TO_DATABASE',
-    description: '',
+    description: 'Unable to establish a connection to the database.',
   },
-  ERR0017: {
-    code: 'ERR0017',
+  API_VERSION_NOT_SUPPORTED: {
+    code: 18,
     category: ErrorCategory.SYSTEM,
     msg: 'API_VERSION_NOT_SUPPORTED',
-    description: '',
+    description: 'The API version you are trying to access is not supported.',
   },
-  ERR1001: {
-    code: 'ERR1001',
-    category: ErrorCategory.BUSINESS,
-    msg: 'Couple participants must be adults',
-    description: '',
+  API_LIMIT_REACHED: {
+    code: 19,
+    category: ErrorCategory.SYSTEM,
+    msg: 'API_LIMIT_REACHED',
+    description: 'You have reached the limit of API calls.',
+  },
+  API_KEY_INVALID: {
+    code: 20,
+    category: ErrorCategory.SYSTEM,
+    msg: 'API_KEY_INVALID',
+    description: 'The API key provided is invalid.',
   },
   //#endregion General
-
-  //#region ERR0100 ... ERR0499 = Booking
-  //#endregion Booking
-
-  //#region ERR0500 ... ERR0799 = Links
-  //#endregion Links
-
-  //#region ERR0800 ... ERR1299 = Groups
-  //#endregion Groups
-
-  //#region ERR1200 ... ERR1999 = Admin
-  ERR1200: {
-    code: 'ERR1200',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for description, please provide a valid description.',
+  //#region ERR0100 ... ERR0199 = PR-Moments
+  PARTICIPANTS_MUST_BE_ADULTS: {
+    code: 1001,
+    category: ErrorCategory.BUSINESS,
+    msg: 'PARTICIPANTS_MUST_BE_ADULTS',
+    description: 'Couple participants must be adults',
   },
-  ERR1201: {
-    code: 'ERR1201',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for created-by, please provide a valid value.',
+  INVALID_PARTICIPANT_ROLE: {
+    code: 1002,
+    category: ErrorCategory.BUSINESS,
+    msg: 'INVALID_PARTICIPANT_ROLE',
+    description: 'The role assigned to the participant is invalid.',
   },
-  ERR1202: {
-    code: 'ERR1202',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for updated-by, please provide a valid value.',
+  PARTICIPANT_NOT_FOUND: {
+    code: 1003,
+    category: ErrorCategory.BUSINESS,
+    msg: 'PARTICIPANT_NOT_FOUND',
+    description: 'The specified participant was not found.',
   },
-  ERR1203: {
-    code: 'ERR1203',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for grouper Id, please provide a valid Id.',
-  },
-  ERR1204: {
-    code: 'ERR1204',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for clause Id, please provide a valid Id.',
-  },
-  ERR1205: {
-    code: 'ERR1205',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for parent-configuration Id, please provide a unique Id.',
-  },
-  ERR1206: {
-    code: 'ERR1206',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for order, please provide a valid order number.',
-  },
-  ERR1207: {
-    code: 'ERR1207',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for Clause content, please provide Clause content.',
-  },
-  ERR1208: {
-    code: 'ERR1208',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for process-sales Id, please provide a valid Id.',
-  },
-  ERR1209: {
-    code: 'ERR1209',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for market-group Id, please provide a valid Id.',
-  },
-  ERR1210: {
-    code: 'ERR1210',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for market-code Id, please provide a valid Id.',
-  },
-  ERR1211: {
-    code: 'ERR1211',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for parent-configuration Id, please provide a unique Id.',
-  },
-  ERR1212: {
-    code: 'ERR1212',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for parameters, please provide a valid value for parameters.',
-  },
-  ERR1213: {
-    code: 'ERR1213',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for initial-value, please provide a valid number.',
-  },
-  ERR1214: {
-    code: 'ERR1214',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for end-value, please provide a valid number.',
-  },
-  ERR1215: {
-    code: 'ERR1215',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for start date, please provide a valid date.',
-  },
-  ERR1216: {
-    code: 'ERR1216',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for end date, please provide a valid date.',
-  },
-  ERR1217: {
-    code: 'ERR1217',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for date-type, please provide a valid date-type.',
-  },
-  ERR1218: {
-    code: 'ERR1218',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for layer Id, please provide a unique Id.',
-  },
-  ERR1219: {
-    code: 'ERR1219',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for variable Id, please provide a unique Id.',
-  },
-  ERR1220: {
-    code: 'ERR1220',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for initial-value layer, please provide a valid value.',
-  },
-  ERR1221: {
-    code: 'ERR1221',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for end-value layer, please provide a valid value.',
-  },
-  ERR1222: {
-    code: 'ERR1222',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for authorizer, please provide a valid value.',
-  },
-  ERR1223: {
-    code: 'ERR1223',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for level, please provide a valid number.',
-  },
-  ERR1224: {
-    code: 'ERR1224',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for subject, please provide a valid subject.',
-  },
-  ERR1225: {
-    code: 'ERR1225',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for message, please provide a valid message.',
-  },
-  ERR1226: {
-    code: 'ERR1226',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for notification-group, please provide a valid notification-group.',
-  },
-  ERR1227: {
-    code: 'ERR1227',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for emails, please provide a valid emails.',
-  },
-  ERR1228: {
-    code: 'ERR1228',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for type Id, please provide a valid number.',
-  },
-  ERR1229: {
-    code: 'ERR1229',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for geographic-territory Id, please provide a valid Id.',
-  },
-  ERR1230: {
-    code: 'ERR1230',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for geographic-location Id, please provide a valid Id.',
-  },
-  ERR1231: {
-    code: 'ERR1231',
-    category: ErrorCategory.USER,
-    msg: 'BOOKING_MODULE',
-    description: 'Incorrect value for concept Id, please provide a unique Id.',
-  },
-  ERR1300: {
-    code: 'ERR1300',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'hotelCode must be a string',
-  },
-  ERR1301: {
-    code: 'ERR1301',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'Maximum characters for hotelCode reached',
-  },
-  ERR1302: {
-    code: 'ERR1302',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'hotelCode is not allowed to be empty',
-  },
-  ERR1303: {
-    code: 'ERR1303',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'trackingNumber must be a string',
-  },
-  ERR1304: {
-    code: 'ERR1304',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'Maximum characters for trackingNumber reached',
-  },
-  ERR1305: {
-    code: 'ERR1305',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'trackingNumber is not allowed to be empty',
-  },
-  ERR1306: {
-    code: 'ERR1306',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'content must be a string',
-  },
-  ERR1307: {
-    code: 'ERR1307',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'content is not allowed to be empty',
-  },
-  //#endregion Admin
-
-  // # templateRegion
-
-  ERR1400: {
-    code: 'ERR1400',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'Only HMTL or MJML string is accepted',
-  },
-  ERR1401: {
-    code: 'ERR1401',
-    category: ErrorCategory.USER,
-    msg: 'COMMON_ERRORS',
-    description: 'Error from MJML to HTML',
-  },
-  // #endTemplateRegion
+  //#endregion PR-Moments
 };
- 
-export default ErrorCode;
+
+export default ErrorDitionary;

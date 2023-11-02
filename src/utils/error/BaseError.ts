@@ -4,8 +4,8 @@ export type DataErrorType = {
   };
 };
 
-export type ErrorType = {
-  code: string;
+export interface ErrorType {
+  code: number;
   category: number;
   msg: string;
   description: string;
