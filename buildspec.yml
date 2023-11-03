@@ -4,7 +4,7 @@ phases:
     commands:
       - node -v
       - yarn
-      - yarn global add serverless@3.27.0
+      - yarn global add serverless@3.28.1
       - sls -v
       - cd layers/lib/nodejs
       - yarn --prod
