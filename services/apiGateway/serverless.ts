@@ -64,7 +64,7 @@ const serverlessConfiguration: AWS = {
       CLEVER_USER_PWD: '${ssm:CLEVER_USER_PWD, "CLEVER_USER_PWD"}',      
     },
     layers: [
-      '${param:commonLib, "commonlib"}',
+      "${param:commonLib, 'commonlib'}",
       "${param:commonDb, 'commondb'}",
     ],
     deploymentBucket: {
@@ -87,7 +87,7 @@ const serverlessConfiguration: AWS = {
   custom: {
     esbuild: {
       external:[
-        "aws-sdk"
+        'aws-sdk'
       ],
       plugins: 'esbuild-plugins.ts',
       bundle: true,
@@ -101,7 +101,7 @@ const serverlessConfiguration: AWS = {
     },
     service: 'api-gateway',
     'project-name': 'architecture',
-    stage: '${env:Stage, "local"}',
+    stage: "${env:Stage, 'local'}",
     func_prefix: '${self:custom.stage}-${self:custom.project-name}-${self:custom.service}',
   },
 };
