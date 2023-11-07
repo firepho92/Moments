@@ -13,11 +13,11 @@ import UseCase from 'src/infrastructure/useCase/UseCase';
 import HttpStatusCode from 'src/utils/enums/httpStatusCode';
 import TenantByUser from 'src/domain/entity/management/TenantByUser';
 import DataBaseUser from 'src/domain/entity/management/DataBaseUser';
-import CreateSpaceDto from 'src/domain/dto/admin/CreateSpaceDto';
+import CreateSpaceDto from 'src/domain/dto/management/CreateSpaceDto';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 import CreateBaseRepository from 'src/infrastructure/domain/repository/CreateBaseRepository';
 import FindOneProfileRepository from 'src/domain/repository/public/profile/FindOneProfileRepository';
-import CreateManagementDBStructureRepository from 'src/domain/repository/admin/management/CreateManagementDBStructureRepository';
+import CreateManagementDBStructureRepository from 'src/domain/repository/management/management/CreateManagementDBStructureRepository';
 
 @injectable()
 export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, Promise<TenantByUser>> {
@@ -34,6 +34,7 @@ export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, 
   async execute(port?: CreateSpaceDto): Promise<TenantByUser> {
     console.log('CreateMomentSpaceUseCase port', port);
     await this.dBConnectionManager.connect();
+    throw new Exception(HttpStatusCode.NOT_FOUND, ErrorCode.NOT_FOUND)
     let profile: Profile;
     try {
       profile = await this.findOneProfileRepository.execute(port.user);

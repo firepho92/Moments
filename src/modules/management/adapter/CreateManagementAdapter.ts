@@ -4,9 +4,9 @@ import { inject, injectable } from 'inversify';
 import IdentityJWT from 'src/utils/auth/IdentityJWT';
 import Adapter from 'src/infrastructure/adapter/Adapter';
 import UseCase from 'src/infrastructure/useCase/UseCase';
-import TenantByUserDto from 'src/domain/dto/admin/TenantByUserDto';
+import TenantByUserDto from 'src/domain/dto/management/TenantByUserDto';
 import FindQueryDTO from 'src/infrastructure/domain/dto/FindQueryDTO';
-import CreateSpaceDto from 'src/domain/dto/admin/CreateSpaceDto';
+import CreateSpaceDto from 'src/domain/dto/management/CreateSpaceDto';
 
 @injectable()
 export default class CreateManagementAdapter implements Adapter<string, Promise<TenantByUserDto>> {

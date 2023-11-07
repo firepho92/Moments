@@ -1,4 +1,4 @@
-import UserModel from '../admin/UserModel';
+import UserModel from '../management/UserModel';
 import { Column, Entity, OneToOne } from 'typeorm';
 import BaseEntityModel from 'src/infrastructure/domain/model/BaseModel';
 

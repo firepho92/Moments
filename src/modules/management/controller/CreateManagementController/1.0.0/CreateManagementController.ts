@@ -5,7 +5,7 @@ import { inject, injectable } from 'inversify';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import Adapter from 'src/infrastructure/adapter/Adapter';
 import Mapper from 'src/infrastructure/domain/mapper/Mapper';
-import TenantByUserDto from 'src/domain/dto/admin/TenantByUserDto';
+import TenantByUserDto from 'src/domain/dto/management/TenantByUserDto';
 import APIGatewayResult from 'src/infrastructure/domain/dto/APIGatewayResult';
 import APIGatewayProxyEventBaseController from 'src/infrastructure/controller/APIGatewayProxyEventBaseController';
 import Validator, { VALIDATOR_TYPE } from 'src/utils/request/Validator';

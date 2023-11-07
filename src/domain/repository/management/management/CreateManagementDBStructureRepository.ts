@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import { DataSource, QueryRunner } from 'typeorm';
 import Repository from 'src/infrastructure/domain/repository/Repository';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
-import CreateManagementDto from 'src/domain/dto/admin/CreateManagementDto';
+import CreateManagementDto from 'src/domain/dto/management/CreateManagementDto';
 
 @injectable()
 export default class CreateManagementDBStructureRepository implements Repository<any, Promise<void>> {

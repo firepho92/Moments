@@ -1,10 +1,10 @@
 import TYPES from './TYPES';
 import { Container } from 'inversify';
 import SecretsManager from '../../../../../src/utils/aws/SecretsManager';
-import CreateTenantRepository from '../../../../../src/domain/repository/admin/tenant/CreateTenantRepository';
-import CreateTenantByUserRepository from '../../../../../src/domain/repository/admin/tenantByUser/CreateTenantByUserRepository';
-import CreateManagementDBStructureRepository from '../../../../../src/domain/repository/admin/management/CreateManagementDBStructureRepository';
-import CreateUserRepository from '../../../../../src/domain/repository/admin/user/CreateUserRepository';
+import CreateTenantRepository from '../../../../../src/domain/repository/management/tenant/CreateTenantRepository';
+import CreateTenantByUserRepository from '../../../../../src/domain/repository/management/tenantByUser/CreateTenantByUserRepository';
+import CreateManagementDBStructureRepository from '../../../../../src/domain/repository/management/management/CreateManagementDBStructureRepository';
+import CreateUserRepository from '../../../../../src/domain/repository/management/user/CreateUserRepository';
 import FindOneProfileRepository from '../../../../../src/domain/repository/public/profile/FindOneProfileRepository';
 import CreateMomentSpaceAdminController1_0_0 from '../../../../../src/modules/management/controller/CreateManagementController/1.0.0/CreateManagementController';
 import CreateManagementAdapter from '../../../../../src/modules/management/adapter/CreateManagementAdapter';
