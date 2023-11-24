@@ -7,7 +7,7 @@ import DBConnectionManager from 'src/utils/database/DBConnectionManager';
 import CreateManagementDto from 'src/domain/dto/management/CreateManagementDto';
 
 @injectable()
-export default class CreateManagementDBStructureRepository implements Repository<any, Promise<void>> {
+export default class CreateManagementDBStructureRepository implements Repository<CreateManagementDto, Promise<void>> {
   constructor(
     @inject(TYPES.DBConnectionManager) private readonly dbConnectionManager: DBConnectionManager,
   ) {}
