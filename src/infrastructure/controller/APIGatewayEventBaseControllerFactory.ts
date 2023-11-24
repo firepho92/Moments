@@ -12,7 +12,7 @@ export default class APIGatewayEventBaseControllerFactory extends EventBaseContr
   constructor(
     private readonly container: Container,
     private readonly event: APIGatewayProxyEvent,
-    private readonly handlerTypes: { [key: string]: symbol }
+    private readonly controllerTypes: { [key: string]: symbol }
   ) {
     super();
   }
@@ -32,8 +32,8 @@ export default class APIGatewayEventBaseControllerFactory extends EventBaseContr
     // console.log('APIGatewayEventBaseControllerFactory');
     const version = this.getVersion(this.event);
 
-    if (!Object.keys(this.handlerTypes).includes(version)) throw new Exception(HttpStatusCode.BAD_REQUEST, [ErrorCode.ERR0017], []);
-    const controller: APIGatewayProxyEventBaseController = this.container.get<APIGatewayProxyEventBaseController>(this.handlerTypes[version]);
+    if (!Object.keys(this.controllerTypes).includes(version)) throw new Exception(HttpStatusCode.BAD_REQUEST, [ErrorCode.BAD_REQUEST], []);
+    const controller: APIGatewayProxyEventBaseController = this.container.get<APIGatewayProxyEventBaseController>(this.controllerTypes[version]);
     return controller;
   }
 }
