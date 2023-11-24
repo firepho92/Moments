@@ -1,12 +1,12 @@
 import 'reflect-metadata';
-import { injectable } from 'inversify';
-import { EntityNotFoundError, SelectQueryBuilder } from 'typeorm';
 import Repository from './Repository';
-import HttpStatusCode from 'src/utils/enums/httpStatusCode';
-import PostgresSQLErrorCodes from 'src/utils/enums/postgresSQLErrorCodes';
-import Exception from 'src/utils/error/Exception';
+import { injectable } from 'inversify';
 import Warning from 'src/utils/error/Warning';
+import Exception from 'src/utils/error/Exception';
 import ErrorCode from 'src/utils/error/errorCode';
+import HttpStatusCode from 'src/utils/enums/httpStatusCode';
+import { EntityNotFoundError, SelectQueryBuilder } from 'typeorm';
+import PostgresSQLErrorCodes from 'src/utils/enums/postgresSQLErrorCodes';
 
 //const logger = LoggerFactory.getInstance();
 
@@ -21,9 +21,9 @@ import ErrorCode from 'src/utils/error/errorCode';
  * @updatedBy Alexandro Aguilar
  */
 @injectable()
-export default abstract class FindOneBaseRepository<T, U> implements Repository<T, Promise<U>> {
+export default abstract class FindOneBaseRepository<InputParams, Result> implements Repository<InputParams, Promise<Result>> {
 
-  protected abstract buildQuery(port?: T): Promise<SelectQueryBuilder<U>>;
+  protected abstract buildQuery(port?: InputParams): Promise<SelectQueryBuilder<Result>>;
   /**
    * @function execute
    * @returns Promise<T[], number>
@@ -31,20 +31,20 @@ export default abstract class FindOneBaseRepository<T, U> implements Repository<
    * @description Finds all items paginated
    * @belongsTo Repository
    */
-  async execute(port?: T): Promise<U> {
+  async execute(port?: InputParams): Promise<Result> {
     try {
-      const query = await this.buildQuery(port) as SelectQueryBuilder<U>;
+      const query = await this.buildQuery(port) as SelectQueryBuilder<Result>;
       const result = await query.getOneOrFail();
       return result;
     } catch (error) {
-      console.error(error);
+      console.error('FindOneBaseRepository error', error);
       if (error.code === PostgresSQLErrorCodes.FOREIGN_KEY_VIOLATION)
-        throw new Warning(HttpStatusCode.NOT_FOUND, [], ErrorCode.ERR0001);
+        throw new Warning(HttpStatusCode.NOT_FOUND, [], ErrorCode.NOT_FOUND);
       if (error.code === PostgresSQLErrorCodes.INVALID_TEXT_REPRESENTATI)
-        throw new Warning(HttpStatusCode.BAD_REQUEST, [], ErrorCode.ERR0008);
-      if (error instanceof EntityNotFoundError) throw new Warning(HttpStatusCode.NOT_FOUND, [], ErrorCode.ERR0001);
+        throw new Warning(HttpStatusCode.BAD_REQUEST, [], ErrorCode.BAD_REQUEST);
+      if (error instanceof EntityNotFoundError) throw new Warning(HttpStatusCode.NOT_FOUND, [], ErrorCode.NOT_FOUND);
 
-      throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorCode.ERR0000, []);
+      throw new Exception(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorCode.INTERNAL_SERVER_ERROR, []);
     }
   }
 }
