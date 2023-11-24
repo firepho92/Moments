@@ -14,10 +14,12 @@ import HttpStatusCode from 'src/utils/enums/httpStatusCode';
 import TenantByUser from 'src/domain/entity/management/TenantByUser';
 import DataBaseUser from 'src/domain/entity/management/DataBaseUser';
 import CreateSpaceDto from 'src/domain/dto/management/CreateSpaceDto';
+import FindQueryDTO from 'src/infrastructure/domain/dto/FindQueryDTO';
 import DBConnectionManager from 'src/utils/database/DBConnectionManager';
+import Repository from 'src/infrastructure/domain/repository/Repository';
+import CreateManagementDto from 'src/domain/dto/management/CreateManagementDto';
 import CreateBaseRepository from 'src/infrastructure/domain/repository/CreateBaseRepository';
-import FindOneProfileRepository from 'src/domain/repository/public/profile/FindOneProfileRepository';
-import CreateManagementDBStructureRepository from 'src/domain/repository/management/management/CreateManagementDBStructureRepository';
+import FindOneBaseRepository from 'src/infrastructure/domain/repository/FindOneBaseRepository';
 
 @injectable()
 export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, Promise<TenantByUser>> {
@@ -26,15 +28,15 @@ export default class CreateManagementUseCase implements UseCase<CreateSpaceDto, 
     @inject(TYPES.CreateUserRepository) private readonly createUserRepository: CreateBaseRepository<User>,
     @inject(TYPES.CreateTenantRepository) private readonly createTenantRepository: CreateBaseRepository<Tenant>,
     @inject(TYPES.CreateTenantByUserRepository) private readonly createTenantByUserRepository: CreateBaseRepository<TenantByUser>,
-    @inject(TYPES.FindOneProfileRepository) private readonly findOneProfileRepository: FindOneProfileRepository,
-    @inject(TYPES.CreateManagementDBStructureRepository) private readonly createManagementDBStructureRepository: CreateManagementDBStructureRepository,
+    @inject(TYPES.FindOneProfileRepository) private readonly findOneProfileRepository: FindOneBaseRepository<FindQueryDTO, Profile>,
+    @inject(TYPES.CreateManagementDBStructureRepository) private readonly createManagementDBStructureRepository: Repository<CreateManagementDto, Promise<void>>,
     @inject(TYPES.SecretsManager) private readonly secretsManager: SecretsBase,
   ) {}
 
   async execute(port?: CreateSpaceDto): Promise<TenantByUser> {
     console.log('CreateMomentSpaceUseCase port', port);
     await this.dBConnectionManager.connect();
-    throw new Exception(HttpStatusCode.NOT_FOUND, ErrorCode.NOT_FOUND)
+
     let profile: Profile;
     try {
       profile = await this.findOneProfileRepository.execute(port.user);
