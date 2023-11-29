@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import Profile from '../public/Profile';
 import EventEntity from '../tenant/Event';
+import Tenant from '../management/Tenant';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import BaseEntity from 'src/infrastructure/domain/entity/BaseEntity';
-import Tenant from '../management/Tenant';
 
 @Entity({ name: 'post' })
 export default class Post extends BaseEntity {
