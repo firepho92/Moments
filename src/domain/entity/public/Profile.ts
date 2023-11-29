@@ -1,34 +1,26 @@
 import 'reflect-metadata';
+import Post from '../tenant/Post';
 import User from '../management/User';
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import BaseEntity from 'src/infrastructure/domain/entity/BaseEntity';
 
 @Entity({name: 'profile', schema: 'public'})
 export default class Profile extends BaseEntity {
   @Column({type: 'varchar', length: 120, name: 'name', nullable: false})
-  private _name: string;
+  name: string;
 
   @Column({type: 'varchar', length: 120, name: 'email', nullable: false})
-  private _email: string;
+  email: string;
 
   @OneToOne(() => User, (user: User) => user.profile)
-  private _user: User;
+  user: User;
+
+  @OneToMany(() => Post, (post: Post) => post.profile)
+  posts: Post[];
 
   constructor(name: string, email: string) {
     super();
-    this._name = name;
-    this._email = email;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  get email(): string {
-    return this._email;
-  }
-
-  get user(): User {
-    return this._user;
+    this.name = name;
+    this.email = email;
   }
 }

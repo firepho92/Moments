@@ -7,20 +7,13 @@ import BaseEntity from 'src/infrastructure/domain/entity/BaseEntity';
 export default class Role extends BaseEntity {
 
   @Column({type: 'varchar', length: 120, name: 'name'})
-  private _name: string;
+  name: string;
 
   @OneToMany(() => User, (user: User) => user.role)
-  private _users: User[];
+  users: User[];
 
-  constructor() {
+  constructor(name: string) {
     super();
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  get users(): User[] {
-    return this._users;
+    this.name = name;
   }
 }
